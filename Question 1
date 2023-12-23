@@ -1,0 +1,29 @@
+def indianCurrencyNotation(rupees):
+    string = str(rupees)
+    l = len(string)
+    index = l - 3
+    first = string[:index]
+    last = string[index:]
+    first_len = len(first)
+    commas_needed = (first_len - 1) // 2
+    reverse = first[::-1]
+    
+    position = reverse[:2]
+    for i in range(commas_needed):
+        position += ',' + reverse[2 + i * 2: 4 + i * 2]
+        
+    result = position[::-1]
+    answer = ",".join([result, last])
+    print(answer)
+
+rupees = int(input("Enter the amount: "))
+indianCurrencyNotation(rupees)
+
+"""
+@First I am taking an input.
+@Second I am changing the type of input. From Int --> Str.
+@Then I am diving it so I got the last 3 digits; Because as per Indian Curreny Notations there will be a comma before the last 3 digits.
+@2 + i * 2: This is the starting index for slicing the reversed string reverse. It starts at index 2 and then increments by 2 for each iteration of the loop.
+@4 + i * 2: This is the ending index for slicing the reversed string reverse. It starts at index 4 and also increments by 2 for each iteration of the loop.
+@After out of the loop again reversed and added the both part with .join(); Returning the answer
+"""
