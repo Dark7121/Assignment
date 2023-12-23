@@ -1,0 +1,26 @@
+def questionTwo(N, K, playerHeights):
+    need_to_be_shot = 0
+    for i in playerHeights:
+        if i > K:
+            need_to_be_shot += 1
+    return need_to_be_shot
+    
+def main():
+    T = int(input("Total test case number: "))
+    for _ in range(T):
+        N, K = map(int, input().split())
+        player_heights = list(map(int, input().split()))
+        answer = questionTwo(N, K, player_heights)
+        print(answer)
+
+if __name__ == "__main__":
+    main()
+
+
+"""
+@Because there is multiple test cases that's why I am using script style.
+@Here we need to find out how many of them are much more higher than K.
+@As K is provided so we can directly compare it and withing for loop and with the if condition we can count that how many are higher than K.
+@Now in main() we are taking T as the test case input. N, K in a line space separated; N for total many player and K is the height of Gi-Hun and Ali. Gi-Hun and Ali have same height.
+@Then we are calling out questionTwo funtion and returni g the answer.
+"""
